@@ -25,15 +25,10 @@ namespace ReClassNET_Server
             
             foreach (var ct in Enum.GetValues(typeof(CommandType)).Cast<CommandType>())  
             {  
-                var modeStr = mode.ToString();
-                if(mode == Mode.x86 || mode == Mode.x64)
-                {
-                    modeStr = "Win";
-                }
-                var type = Type.GetType("ReClassNET_Server."+modeStr+"."+ct.ToString());
+                var type = Type.GetType("ReClassNET_Server."+mode.ToString()+"."+ct.ToString());
                 if(type == null)
                 {
-                    throw new Exception("Class not found: \"ReClassNET_Server."+modeStr+"."+ct.ToString()+"\"");
+                    throw new Exception("Class not found: \"ReClassNET_Server."+mode.ToString()+"."+ct.ToString()+"\"");
                 }
                 RegisterCommand(ct, type);
             }
