@@ -8,7 +8,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using static ReClassNET_Server.Windows;
 
-namespace ReClassNET_Server.x86
+namespace ReClassNET_Server.Win
 {
     internal class EnumerateRemoteSectionsAndModules : ICommand
     {

@@ -1,12 +1,11 @@
 ﻿using ReClassNET.Extensions;
 using ReClassNET_Server;
-using System;
 using System.IO;
 using static ReClassNET_Server.Windows;
 
-namespace ReClassNET_Server.x64
+namespace ReClassNET_Server.Win
 {
-    internal class IsProcessValid : ICommand
+    internal class ReadRemoteMemory : ICommand
     {
         public BinaryReader reader { get; set; }
         public BinaryWriter writer { get; set; }
@@ -18,14 +17,16 @@ namespace ReClassNET_Server.x64
 
         public void ProcessData()
         {
-            uint exitCode;
-            bool isProcessValid = false;
-            if (GetExitCodeProcess(reader.ReadIntPtr(), out exitCode))
+            var process = reader.ReadIntPtr();
+            var address = reader.ReadIntPtr();
+            var size = reader.ReadInt32();
+            byte[] buf = new byte[size];
+            var res = Rpm(process, address, buf, size);
+            writer.Write(res);
+            if (res)
             {
-                isProcessValid = exitCode == STILL_ACTIVE;
+                writer.Write(buf);
             }
-            writer.Write(isProcessValid);
-            Console.WriteLine(isProcessValid ? "Valid" : "InValid");
         }
 
         public void Unintialize()

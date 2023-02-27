@@ -3,7 +3,7 @@ using ReClassNET_Server;
 using System.IO;
 using static ReClassNET_Server.Windows;
 
-namespace ReClassNET_Server.x64
+namespace ReClassNET_Server.Win
 {
     internal class CloseRemoteProcess : ICommand
     {

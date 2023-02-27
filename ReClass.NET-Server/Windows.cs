@@ -76,7 +76,7 @@ namespace ReClassNET_Server
             public TypeEnum Type;
         }
 
-         [StructLayout(LayoutKind.Sequential)]
+        [StructLayout(LayoutKind.Sequential)]
         public struct MODULEENTRY32
         {
             internal uint dwSize;
@@ -138,8 +138,16 @@ namespace ReClassNET_Server
 
         public static bool Rpm(IntPtr ProcessHandle, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize)
         {
+#if PLATFORM_X64
             return Syscalls.ZwReadVirtualMemory(ProcessHandle, lpBaseAddress, lpBuffer, dwSize, out _) == Ntstatus.Success;
+#else
+            return ReadProcessMemory(ProcessHandle, lpBaseAddress, lpBuffer, dwSize, out _);
+#endif
         }
+
+        [DllImport("kernel32.dll")]
+        public static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer,
+            int dwSize, out IntPtr lpNumberOfBytesRead);
 
         [DllImport("kernel32.dll")]
         public static extern bool GetExitCodeProcess(IntPtr hProcess, out uint ExitCode);

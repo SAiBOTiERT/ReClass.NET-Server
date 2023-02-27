@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 
-namespace ReClassNET_Server.x86
+namespace ReClassNET_Server.Win
 {
     internal class EnumerateProcesses : ICommand
     {
