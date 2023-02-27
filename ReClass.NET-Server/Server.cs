@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
 using System.Threading.Tasks;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading;
-using ReClassNET.Core;
-using ReClassNET.Extensions;
-using ReClassNET.Memory;
-using static ReClassNET_Server.Windows;
 
 namespace ReClassNET_Server
 {
