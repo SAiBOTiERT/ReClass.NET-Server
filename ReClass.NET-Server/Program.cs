@@ -7,7 +7,7 @@ namespace ReClassNET_Server
     {
         static void Main(string[] args)
         {
-            var server = new Server(Mode.x64);
+            var server = new Server(Mode.x86);
             server.StartAsync().Wait();
         }
     }
