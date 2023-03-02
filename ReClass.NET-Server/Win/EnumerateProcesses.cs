@@ -12,11 +12,6 @@ namespace ReClassNET_Server.Win
         public BinaryReader reader { get; set; }
         public BinaryWriter writer { get; set; }
 
-        public void Initialize()
-        {
-            
-        }
-
         public void ProcessData()
         {
             Process[] procs = Process.GetProcesses();
@@ -45,11 +40,6 @@ namespace ReClassNET_Server.Win
             {
                 writer.Write(PacketManager.getBytes(procData));
             }
-        }
-
-        public void Unintialize()
-        {
-           
         }
     }
 }

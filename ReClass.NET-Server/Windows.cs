@@ -79,18 +79,18 @@ namespace ReClassNET_Server
         [StructLayout(LayoutKind.Sequential)]
         public struct MODULEENTRY32
         {
-            internal uint dwSize;
-            internal uint th32ModuleID;
-            internal uint th32ProcessID;
-            internal uint GlblcntUsage;
-            internal uint ProccntUsage;
-            internal IntPtr modBaseAddr;
-            internal uint modBaseSize;
-            internal IntPtr hModule;
+            public uint dwSize;
+            public uint th32ModuleID;
+            public uint th32ProcessID;
+            public uint GlblcntUsage;
+            public uint ProccntUsage;
+            public IntPtr modBaseAddr;
+            public uint modBaseSize;
+            public IntPtr hModule;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-            internal string szModule;
+            public string szModule;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)]
-            internal string szExePath;
+            public string szExePath;
         }
 
         [Flags]
@@ -105,6 +105,21 @@ namespace ReClassNET_Server
             Inherit = 0x80000000,
             NoHeaps = 0x40000000
         }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct PROCESSENTRY32
+        {
+            public uint dwSize;
+            public uint cntUsage;
+            public uint th32ProcessID;
+            public IntPtr th32DefaultHeapID;
+            public uint th32ModuleID;
+            public uint cntThreads;
+            public uint th32ParentProcessID;
+            public int pcPriClassBase;
+            public uint dwFlags;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 260)] public string szExeFile;
+        };
 
         [DllImport("kernel32.dll")]
         public static extern IntPtr CreateToolhelp32Snapshot(SnapshotFlags dwFlags, uint th32ProcessID);

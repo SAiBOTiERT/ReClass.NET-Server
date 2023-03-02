@@ -11,11 +11,6 @@ namespace ReClassNET_Server.Win
         public BinaryReader reader { get; set; }
         public BinaryWriter writer { get; set; }
 
-        public void Initialize()
-        {
-
-        }
-
         public void ProcessData()
         {
             uint exitCode;
@@ -26,11 +21,6 @@ namespace ReClassNET_Server.Win
             }
             writer.Write(isProcessValid);
             Console.WriteLine(isProcessValid ? "Valid" : "InValid");
-        }
-
-        public void Unintialize()
-        {
-
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using ReClassNET.Extensions;
 using ReClassNET_Server;
 using System.IO;
-using static ReClassNET_Server.Windows;
 
-namespace ReClassNET_Server.Win
+namespace ReClassNET_Server.FPGA
 {
     internal class CloseRemoteProcess : ICommand
     {
@@ -13,7 +12,6 @@ namespace ReClassNET_Server.Win
         public void ProcessData()
         {
             var hObject = reader.ReadIntPtr();
-            CloseHandle(hObject);
         }
     }
 }

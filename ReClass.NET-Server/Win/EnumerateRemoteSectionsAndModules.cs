@@ -15,11 +15,6 @@ namespace ReClassNET_Server.Win
         public BinaryReader reader { get; set; }
         public BinaryWriter writer { get; set; }
 
-        public void Initialize()
-        {
-
-        }
-
         public void ProcessData()
         {
             var process = reader.ReadIntPtr();
@@ -116,11 +111,6 @@ namespace ReClassNET_Server.Win
                     writer.Write(PacketManager.getBytes(module));
                 }
             }
-        }
-
-        public void Unintialize()
-        {
-
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿using ReClassNET.Extensions;
-using ReClassNET_Server;
 using System.IO;
-using static ReClassNET_Server.Windows;
 
-namespace ReClassNET_Server.Win
+namespace ReClassNET_Server.FPGA
 {
     internal class ReadRemoteMemory : ICommand
     {
@@ -15,13 +13,9 @@ namespace ReClassNET_Server.Win
             var process = reader.ReadIntPtr();
             var address = reader.ReadIntPtr();
             var size = reader.ReadInt32();
-            byte[] buf = new byte[size];
-            var res = Rpm(process, address, buf, size);
-            writer.Write(res);
-            if (res)
-            {
-                writer.Write(buf);
-            }
+            var buf = FPGAWrapper.instance.RPM((uint)process, (ulong)address, (uint)size);
+            writer.Write(true);
+            writer.Write(buf);
         }
     }
 }

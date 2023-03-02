@@ -78,9 +78,7 @@ namespace ReClassNET_Server
             var writer = new BinaryWriter(stream);
             command.reader = reader;
             command.writer = writer;
-            command.Initialize();
             command.ProcessData();
-            command.Unintialize();
             writer.Flush();
             
         }

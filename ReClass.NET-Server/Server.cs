@@ -15,9 +15,14 @@ namespace ReClassNET_Server
         private CancellationTokenSource tokenSource;
         private CancellationToken token;
         private PacketManager pm;
+        private FPGAWrapper fpga = null;
 
         public Server(Mode mode, ushort port = 8080)
         {
+            if(mode == Mode.FPGA)
+            {
+                fpga = new FPGAWrapper();
+            }
             tcpListener = new TcpListener(IPAddress.Any, port);
             pm = new PacketManager(mode);
         }

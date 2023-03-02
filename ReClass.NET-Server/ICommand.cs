@@ -11,9 +11,6 @@ namespace ReClassNET_Server
     {
         BinaryReader reader { get; set; }
         BinaryWriter writer { get; set; }
-
-        void Initialize();
-        void Unintialize();
         void ProcessData();
 
     }
